@@ -1,0 +1,77 @@
+@charset "UTF8";
+
+<style type="text/css">
+
+.section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #e1d3b6;
+    transition: background-color 0.5s ease;
+}
+
+.section .searchForm {
+    max-width: 400px;
+    width: 100%;
+    background-color: white;
+    border-radius: 4px;
+    top: 40%;
+    transform: translateY(-50%);
+    position: relative;
+    padding: 16px;
+    margin: auto;
+    box-shadow: 0px 3px 10px rgb(0 0 0 / 30%);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.section .searchForm .title {
+    text-align: center;
+    font-size: 32px;
+    border-bottom: 0.5px solid #bbb;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+p {
+    line-height: 1.5em;
+    font-family: source-han-serif-tc,serif;
+    color: #333;
+}
+
+.section .searchForm .row {
+    padding: 16px 0px;
+}
+
+.wHalf {
+    width: 50%;
+    position: relative;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.section .searchForm .subTitle {
+    font-size: 16px;
+    display: inline-block;
+}
+
+p {
+    line-height: 1.5em;
+    font-family: source-han-serif-tc,serif;
+    color: #333;
+}
+
+.section .searchForm .textinput {
+    border-radius: 0px;
+    display: inline-block;
+    border: 0px solid;
+    border-bottom: 0.5px solid #bbb;
+    width: calc(100% - 72px);
+    margin-left: 8px;
+    padding: 4px 8px;
+}
+    </style>
+

@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <!-- 
+<link rel="stylesheet" href="../style/main.css" type="text/css" />
+ -->
+    <link rel="stylesheet" th:href="@{/style/main.css}" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="section">
+      <div class="searchForm">
+        <p class="title">Instagram Picker</p>
+        <div class="row">
+          <p class="subTitle">貼文網址</p>
+          <input
+            class="textinput"
+            id="url"
+            placeholder="ex. https://www.instagram.com/p/B-ZEuJypDtG/"
+          />
+        </div>
+        <div class="row clearfix">
+          <div class="wHalf floatLeft">
+            <p class="subTitle">抽獎人數</p>
+            <input class="textinput width50" id="choice_count" value="1" />
+          </div>
+          <div class="wHalf floatLeft">
+            <p class="subTitle">標記人數</p>
+            <input class="textinput width50" id="tag_count" value="0" />
+          </div>
+        </div>
+        <div class="row">
+          <p class="subTitle">指定留言內容</p>
+          <input class="textinput keyword" id="keyword" />
+        </div>
+        <div class="row clearfix">
+          <div class="wHalf floatLeft switch">
+            <p class="subTitle">可以重複留言</p>
+            <div class="mutiSwitch" id="enable_duplicate">
+              <div class="fill"></div>
+            </div>
+          </div>
+          <div class="wHalf floatLeft">
+            <div class="send">
+              <button id="btn1" onclick="sendFun()">
+                <p>抽獎</p>
+              </button>
+
+              <script>
+                function sendFun() {
+                  console.log("send()");
+                  var url = document.getElementById("url").value;
+                  console.log("url", url);
+                  var choice_count = document.getElementById("choice_count")
+                    .value;
+                  console.log("choice_count", choice_count);
+                  var tag_count = document.getElementById("tag_count").value;
+                  console.log("tag_count", tag_count);
+                  var keyword = document.getElementById("keyword").value;
+                  console.log("keyword", keyword);
+                  //var enable_duplicate =document.getElementById("enable_duplicate");
+                  //console.log('enable_duplicate',enable_duplicate);
+                  var data = {
+                    url: url,
+                    choice_count: choice_count,
+                    tag_count: tag_count,
+                  };
+                  console.log("before Send data", data);
+
+                  //   $.ajax({
+                  //     type: "POST",
+                  //     url: "/send",
+                  //     //data: JSON.stringify(myMap),
+                  //     data: JSON.stringify(data),
+                  //     success: function () {
+                  //       alert("success");
+                  //     },
+                  //     error: function () {
+                  //       alert("failure");
+                  //     },
+                  //     contentType: "application/json",
+                  //     dataType: "json",
+                  //   });
+
+                  var request = $.ajax({
+                    type: "POST",
+                    url: "/send",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    // dataType: "json",
+                  })
+                    .done(function (data) {
+                      alert("success");
+                    })
+                    .fail(function () {
+                      alert("error");
+                    })
+                    .always(function () {
+                      alert("complete");
+                    });
+                }
+              </script>
+
+              <div class="sending">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

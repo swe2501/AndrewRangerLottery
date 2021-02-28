@@ -1,0 +1,667 @@
+"use strict";
+function asyncGeneratorStep(a, b, c, d, e, f, g) {
+  try {
+    var h = a[f](g),
+      i = h.value;
+  } catch (a) {
+    return void c(a);
+  }
+  h.done ? b(i) : Promise.resolve(i).then(d, e);
+}
+function _asyncToGenerator(a) {
+  return function () {
+    var b = this,
+      c = arguments;
+    return new Promise(function (d, e) {
+      function f(a) {
+        asyncGeneratorStep(h, d, e, f, g, "next", a);
+      }
+      function g(a) {
+        asyncGeneratorStep(h, d, e, f, g, "throw", a);
+      }
+      var h = a.apply(b, c);
+      f(void 0);
+    });
+  };
+}
+document.onreadystatechange = () => {
+  if ("complete" === document.readyState) {
+    function f() {
+      B = setTimeout(() => {
+        h.classList.remove("active");
+      }, 5e3);
+    }
+    function K() {
+      B && clearTimeout(B);
+    }
+    function L(a, b) {
+      (h.querySelector("p").innerText = a),
+        h.classList.add("active"),
+        (G = !1),
+        c.classList.remove("active"),
+        e.classList.remove("active");
+      b || f();
+    }
+    function M() {
+      l.select();
+      try {
+        var a = document.execCommand("copy");
+        l.blur(),
+          a
+            ? ((k.querySelector("p").innerText = l.value),
+              k.classList.add("active"))
+            : ((k.querySelector("p").innerText =
+                "Hmmmm...\u8907\u88FD\u5931\u6557\u4E86"),
+              k.classList.add("active"));
+      } catch (a) {
+        (k.querySelector("p").innerText =
+          "Hmmmm...\u8907\u88FD\u5931\u6557\u4E86"),
+          k.classList.add("active");
+      }
+      setTimeout(() => {
+        k.classList.remove("active");
+      }, 1e4),
+        window.getSelection().removeAllRanges();
+    }
+    function N(a) {
+      return new Promise((b) => {
+        setTimeout(
+          /*#__PURE__*/ _asyncToGenerator(function* () {
+            var c = yield superagent.get("./igUrlV3/".concat(a));
+            ("active" === c.body.state || "waiting" === c.body.state) &&
+              ((n.style.transform = "translateX(".concat(
+                -100 + 100 * c.body.progress,
+                "%)"
+              )),
+              (r.style.transform = "translateX(".concat(
+                -100 + 100 * c.body.progress,
+                "%)"
+              )),
+              b(N(a))),
+              "completed" === c.body.state &&
+                ((n.style.transform = "translateX(".concat(0, "%)")),
+                (r.style.transform = "translateX(".concat(0, "%)")),
+                b(c.body.data));
+          }),
+          1200
+        );
+      });
+    }
+    var a = document.querySelector(".section"),
+      b = document.querySelector(".switch"),
+      c = document.querySelector(".send"),
+      d = document.querySelector(".back"),
+      e = document.querySelector(".again"),
+      g = document.querySelector(".paint"),
+      h = document.querySelector(".error"),
+      j = document.querySelector(".empty"),
+      k = document.querySelector(".showCopy"),
+      l = document.querySelector(".pickers"),
+      m = document.querySelector(".copy"),
+      n = document.querySelector(".fetchBar"),
+      o = document.querySelector(".hint"),
+      q = document.querySelector(".cover"),
+      r = document.querySelector(".fetchBarAgain"),
+      s = document.querySelector(".col3-1 .container"),
+      t = document.createElement("a"),
+      u = document.createElement("div"),
+      v = document.createElement("div"),
+      w = document.createElement("p"),
+      i = document.createElement("p");
+    t.classList.add("user"),
+      u.classList.add("avatar"),
+      v.classList.add("content"),
+      v.appendChild(w),
+      v.appendChild(i),
+      t.appendChild(u),
+      t.appendChild(v);
+    var H = !1;
+    b.addEventListener("click", function () {
+      var a = b.querySelector(".mutiSwitch");
+      return a.classList.contains("active")
+        ? (a.classList.remove("active"), void (H = !1))
+        : void (a.classList.add("active"), (H = !0));
+    });
+    var x,
+      y,
+      z,
+      A,
+      B,
+      C = [],
+      D = {},
+      E = [],
+      F = [],
+      G = !1;
+    m.addEventListener("click", function () {
+      M();
+    }),
+      o.addEventListener("click", function () {
+        q.classList.add("active");
+      }),
+      q.addEventListener("click", function () {
+        q.classList.remove("active");
+      }),
+      c.addEventListener(
+        "click",
+        /*#__PURE__*/ _asyncToGenerator(function* () {
+          if (
+            (h.classList.remove("active"),
+            j.classList.remove("active"),
+            K(),
+            !G)
+          ) {
+            if (
+              ((l.value = ""),
+              (G = !0),
+              c.classList.add("active"),
+              (x = document.querySelector("#url").value),
+              (y = parseInt(document.querySelector("#choice_count").value)),
+              (z = parseInt(document.querySelector("#tag_count").value)),
+              (A = document.querySelector("#keyword").value),
+              0 > x.indexOf("instagram.com") || !x.split("/p/")[1])
+            )
+              return void L(
+                "\u54CE\u5440\uFF0C\u4F60\u8F38\u5165\u7684\u7DB2\u5740\u4F3C\u4E4E\u7121\u6548\u5436"
+              );
+            var b = x.split("/p/")[1];
+            if (((b = b.split("/")[0]), 35 < b.length))
+              return void L(
+                "\u54CE\u5440\uFF0C\u8981\u516C\u958B\u5E33\u865F\u624D\u53EF\u4EE5\u62BD\u734E\u5594"
+              );
+            try {
+              var d = yield J.pick();
+              if (1 === d.errorCode)
+                return (
+                  L(
+                    "\u54CE\u5440\uFF0C\u4F7F\u7528\u592A\u591A\u6B21\u4E86\uFF0Cig \u751F\u6C23\u4E86\uFF0C\u8ACB\u7A0D\u7B49\u5E7E\u5206\u9418\u518D\u8A66\u5427"
+                  ),
+                  c.classList.add("active"),
+                  e.classList.add("active"),
+                  void setTimeout(() => {
+                    c.classList.remove("active"), e.classList.remove("active");
+                  }, 6e4)
+                );
+              if (3 === d.errorCode)
+                return (
+                  c.classList.remove("active"),
+                  void e.classList.remove("active")
+                );
+              d.errorPost &&
+                L(
+                  "\u6211\u5011\u5075\u6E2C\u5230\u9019\u7BC7 IG \u8CBC\u6587\u7559\u8A00\u7570\u5E38\uFF0C"
+                    .concat(
+                      J.totalCount,
+                      " \u7B46\u7559\u8A00\u4E2D\u6211\u5011\u53EA\u7372\u53D6\u5230 "
+                    )
+                    .concat(
+                      J.totalGet,
+                      " \u7B46\u7559\u8A00\uFF0C\u62BD\u734E\u7D50\u679C\u6709\u5931\u516C\u5E73\u6027\uFF0C\u5EFA\u8B70\u53E6\u5916\u627E\u62BD\u734E\u5668\u8A66\u8A66\u6216\u6539\u7531\u624B\u52D5\u62BD\u734E\u5594"
+                    ),
+                  !0
+                ),
+                (D = d),
+                document
+                  .querySelector(".image img")
+                  .setAttribute("src", d.postInfo.thumbnail_url),
+                (document.querySelector(
+                  ".owner .avatar"
+                ).style.backgroundImage = 'url("'.concat(
+                  d.postInfo.profile_url,
+                  '")'
+                )),
+                (document.querySelectorAll(".owner .content p")[0].innerText =
+                  d.postInfo.author_name),
+                (document.querySelectorAll(".owner .content p")[1].innerText =
+                  d.postInfo.title),
+                !d || (d.users && 0 === d.users.length)
+                  ? j.classList.add("active")
+                  : d.users.map((a) => {
+                      var b = t.cloneNode(!0);
+                      b.setAttribute(
+                        "href",
+                        "https://instagram.com/".concat(a.node.owner.username)
+                      ),
+                        b.setAttribute("target", "_blank"),
+                        (b.querySelector(
+                          ".avatar"
+                        ).style.backgroundImage = 'url("'.concat(
+                          a.node.owner.profile_pic_url,
+                          '")'
+                        )),
+                        (b.querySelectorAll(".content p")[0].innerText =
+                          a.node.owner.username),
+                        (b.querySelectorAll(".content p")[1].innerText =
+                          a.node.text),
+                        (l.value += "@".concat(a.node.owner.username, " ")),
+                        s.appendChild(b),
+                        setTimeout(() => {
+                          b.classList.add("active");
+                        }, 100);
+                    }),
+                a.classList.add("active"),
+                g.classList.add("active"),
+                (r.style.opacity = 0),
+                (r.style.transform = "translateX(".concat(-100, "%)")),
+                setTimeout(() => {
+                  (n.style.transform = "translateX(".concat(-100, "%)")),
+                    (r.style.opacity = 1);
+                }, 2e3),
+                (G = !1);
+            } catch (a) {
+              console.log("====> e", a), L(a.message || a);
+            }
+          } // pickers = [];
+        })
+      );
+    var I = !1;
+    d.addEventListener("click", function () {
+      (J.totalGet = 0),
+        (J.errorPost = !1),
+        h.classList.remove("active"),
+        j.classList.remove("active"),
+        K(),
+        J.errorPost && f();
+      I || // setTimeout(() => {
+        (Array.from(document.querySelectorAll(".user")).map((a) => {
+          s.removeChild(a);
+        }),
+        (I = !0),
+        c.classList.remove("active"),
+        a.classList.remove("active"),
+        g.classList.remove("active"),
+        (I = !1));
+    }),
+      e.addEventListener(
+        "click",
+        /*#__PURE__*/ _asyncToGenerator(function* () {
+          if (
+            (h.classList.remove("active"),
+            j.classList.remove("active"),
+            K(),
+            !G)
+          ) {
+            (l.value = ""),
+              Array.from(document.querySelectorAll(".user")).map((a) => {
+                s.removeChild(a);
+              }),
+              (G = !0),
+              e.classList.add("active");
+            var a;
+            if (C && 0 !== C.length) {
+              if (y >= C.length) a = C;
+              else {
+                for (var b, d = [], f = 0; f < y; f++)
+                  (b = J.choiceIndex(C.length - 1, d)), d.push(b);
+                a = C.filter((a, b) => d.includes(b));
+              }
+              a = { postInfo: D.postInfo, users: a };
+            } else
+              try {
+                if (((a = yield J.pick()), 1 === a.errorCode))
+                  return (
+                    L(
+                      "\u54CE\u5440\uFF0C\u592A\u591A\u4EBA\u5728\u4F7F\u7528\u4E86\uFF0Cig \u751F\u6C23\u4E86\uFF0C\u8ACB\u7A0D\u7B491\u5206\u9418\u518D\u8A66\u5427"
+                    ),
+                    c.classList.add("active"),
+                    e.classList.add("active"),
+                    void setTimeout(() => {
+                      c.classList.remove("active"),
+                        e.classList.remove("active");
+                    }, 6e4)
+                  );
+              } catch (a) {
+                return console.log("====> e", a), void L(a.message || a);
+              } // }
+            return (
+              (D = a),
+              document
+                .querySelector(".image img")
+                .setAttribute("src", a.postInfo.thumbnail_url),
+              (document.querySelector(
+                ".owner .avatar"
+              ).style.backgroundImage = 'url("'.concat(
+                a.postInfo.profile_url,
+                '")'
+              )),
+              (document.querySelectorAll(".owner .content p")[0].innerText =
+                a.postInfo.author_name),
+              (document.querySelectorAll(".owner .content p")[1].innerText =
+                a.postInfo.title),
+              !a || (a.users && 0 === a.users.length)
+                ? j.classList.add("active")
+                : a.users.map((a) => {
+                    var b = t.cloneNode(!0);
+                    b.setAttribute(
+                      "href",
+                      "https://instagram.com/".concat(a.node.owner.username)
+                    ),
+                      b.setAttribute("target", "_blank"),
+                      b.classList.add("active"),
+                      (b.querySelector(
+                        ".avatar"
+                      ).style.backgroundImage = 'url("'.concat(
+                        a.node.owner.profile_pic_url,
+                        '")'
+                      )),
+                      (b.querySelectorAll(".content p")[0].innerText =
+                        a.node.owner.username),
+                      (b.querySelectorAll(".content p")[1].innerText =
+                        a.node.text),
+                      (l.value += "@".concat(a.node.owner.username, " ")),
+                      s.appendChild(b);
+                  }),
+              e.classList.remove("active"),
+              (r.style.opacity = 0),
+              (r.style.transform = "translateX(".concat(-100, "%)")),
+              setTimeout(() => {
+                (n.style.transform = "translateX(".concat(-100, "%)")),
+                  (r.style.opacity = 1);
+              }, 2e3),
+              void (G = !1)
+            );
+          }
+        })
+      );
+    var J = {
+      totalCount: 0,
+      totalGet: 0,
+      errorPost: !1,
+      pick: (function () {
+        var a = _asyncToGenerator(function* () {
+          var a = x.split("/p/")[1];
+          a = a.split("/")[0]; // let result = await this.queryAllIgPost(postId, false, []);
+          // let ha = await superagent
+          //   .post('./checkPostExist')
+          //   .type('form')
+          //   .send({postId})
+          //   // .then(result => result.body)
+          var b = yield this.queryAllIgPost(a, !1, []);
+          if (
+            (3 === b.errorCode &&
+              (L(
+                "ig \u751F\u6C23\u5566\uFF01\u7531\u65BC\u7559\u8A00\u592A\u591A\u6216\u4F7F\u7528\u592A\u591A\u6B21\u5566\uFF01\u88AB ig \u9650\u5236\u4E86\uFF0C\u5148\u70BA\u4F60\u7DE9\u885D 5 \u5206\u9418\u518D\u7E7C\u7E8C\uFF0C\u8ACB\u7A0D\u7B49\u4E00\u4E0B\uFF0C\u4E0D\u8981\u96E2\u958B\u5594\uFF01"
+              ),
+              (b = yield J.repick(
+                b.redata.resultArray,
+                b.redata.postId,
+                b.redata.end_cursor
+              ))),
+            1 === b.errorCode)
+          )
+            return b; // let p = await this.p();
+          var c = {},
+            d = {};
+          try {
+            (c = yield superagent // .get(`https://api.instagram.com/oembed/?url=https://www.instagram.com/p/${postId}/`)
+              .get(
+                "https://www.instagram.com/graphql/query/?query_hash=eaffee8f3c9c089c9904a5915a898814&variables=%7B%22shortcode%22%3A%22".concat(
+                  a,
+                  "%22%2C%22child_comment_count%22%3A3%2C%22fetch_comment_count%22%3A40%2C%22parent_comment_count%22%3A24%2C%22has_threaded_comments%22%3Atrue%7D"
+                )
+              )),
+              (d = yield superagent.get(
+                "https://www.instagram.com/".concat(
+                  c.body.author_name,
+                  "/?__a=1"
+                )
+              ));
+          } catch (a) {
+            console.log("===> getPostInfo e", a);
+          } // let p = {
+          //   thumbnail_url: `https://www.instagram.com/p/${postId}/media/?size=l`,
+          //   author_name: ur.body.author_name,
+          //   author_url: ur.body.author_url,
+          //   title: ur.body.title,
+          //   profile_url: user.body.graphql ? user.body.graphql.user.profile_pic_url : ''
+          // }
+          var e = {
+              thumbnail_url: c.body.data.shortcode_media.display_url,
+              author_name: c.body.data.shortcode_media.owner.username,
+              author_url: c.body.data.shortcode_media.owner.profile_pic_url,
+              title:
+                c.body.data.shortcode_media.edge_media_to_caption.edges[0].node
+                  .text, // profile_url: user.body.graphql ? user.body.graphql.user.profile_pic_url : ''
+              profile_url:
+                c.body.data.shortcode_media.owner.profile_pic_url || "",
+            },
+            f = [],
+            g = []; // console.log('====> p', p, ur);
+          if (
+            ((b = b.filter((a) => {
+              var b = a.node;
+              return (
+                ((this.totalGet +=
+                  (b.edge_threaded_comments &&
+                    b.edge_threaded_comments.count) ||
+                  0),
+                e.author_name !== b.owner.username) &&
+                (H || !g.includes(b.owner.id)) &&
+                (E.includes(b.id)
+                  ? (f.push(a), !1)
+                  : !F.includes(b.id) &&
+                    !(b.text.split("@").length <= z) &&
+                    !(0 > b.text.indexOf(A)) &&
+                    (H || g.push(b.owner.id), !0))
+              );
+            })),
+            console.log("===> this.totalGet", this.totalCount, this.totalGet),
+            this.totalCount / 2 > this.totalGet && (this.errorPost = !0),
+            (C = [...f, ...b]),
+            y >= b.length)
+          )
+            return { postInfo: e, users: [...f, ...b] };
+          for (var h, j = [], k = 0; k < y; k++)
+            (h = this.choiceIndex(b.length - 1, j)), j.push(h);
+          return (
+            (b = b.filter((a, b) => j.includes(b))),
+            console.log("===> this.errorPost", this.errorPost),
+            { postInfo: e, users: [...f, ...b], errorPost: this.errorPost }
+          );
+        });
+        return function pick() {
+          return a.apply(this, arguments);
+        };
+      })(),
+      buffer: (function () {
+        var a = _asyncToGenerator(function* () {
+          return new Promise((a) => {
+            setTimeout(() => {
+              a();
+            }, 12e4);
+          });
+        });
+        return function buffer() {
+          return a.apply(this, arguments);
+        };
+      })(),
+      retry: function retry(a, b, c) {
+        var d = this;
+        return new Promise(
+          /*#__PURE__*/ (function () {
+            var e = _asyncToGenerator(function* (e) {
+              do {
+                console.log("===> try");
+                try {
+                  if (
+                    (yield d.buffer(),
+                    (c = yield d.queryAllIgPost(a, b, c)),
+                    1 === c.errorCode || 3 === c.errorCode)
+                  )
+                    continue;
+                  e(c);
+                } catch (a) {
+                  console.log("==> repick e", a);
+                  continue; // go again
+                }
+                break;
+              } while (!0);
+            });
+            return function () {
+              return e.apply(this, arguments);
+            };
+          })()
+        );
+      },
+      repick: (function () {
+        var a = _asyncToGenerator(function* (a, b, c) {
+          (a = yield this.retry(b, c, a)), console.log("====> repick", a); // do {
+          //   try {
+          //       // some code
+          //       await this.buffer();
+          //       result = await this.queryAllIgPost(postId, after, result);
+          //   } catch (e){
+          //       console.log('==> repick e', e);
+          //       continue; // go again
+          //   }
+          //   break;
+          // } while (true);
+          // while(loop) {
+          //   try {
+          //     await this.buffer();
+          //     result = await this.queryAllIgPost(postId, after, result);
+          //     loop = false
+          //   } catch(e) {
+          //     console.log(e);
+          //   }
+          // }
+          var d = yield this.p();
+          if (1 === a.errorCode) return a;
+          var e = [],
+            f = [];
+          if (
+            ((a = a.filter((a) => {
+              var b = a.node;
+              return (
+                d.author_name !== b.owner.username &&
+                (H || !f.includes(b.owner.id)) &&
+                (E.includes(b.id)
+                  ? (e.push(a), !1)
+                  : !F.includes(b.id) &&
+                    !(b.text.split("@").length <= z) &&
+                    !(0 > b.text.indexOf(A)) &&
+                    (H || f.push(b.owner.id), !0))
+              );
+            })),
+            (C = [...e, ...a]),
+            y >= a.length)
+          )
+            return { postInfo: d, users: [...e, ...a] };
+          for (var g, h = [], j = 0; j < y; j++)
+            (g = this.choiceIndex(a.length - 1, h)), h.push(g);
+          return (
+            (a = a.filter((a, b) => h.includes(b))),
+            { postInfo: d, users: [...e, ...a] }
+          );
+        });
+        return function repick() {
+          return a.apply(this, arguments);
+        };
+      })(),
+      queryIgPost: (function () {
+        var a = _asyncToGenerator(function* (a, b) {
+          var c = b ? ',"after":"'.concat(b, '"') : "";
+          return yield superagent
+            .get("https://www.instagram.com/graphql/query/")
+            .query({ query_hash: "bc3296d1ce80a24b1b6e40b1e72903f5" })
+            .query({
+              variables: '{"shortcode":"'
+                .concat(a, '","first":50')
+                .concat(c, "}"),
+            });
+        });
+        return function queryIgPost() {
+          return a.apply(this, arguments);
+        };
+      })(),
+      queryAllIgPost: (function () {
+        var a = _asyncToGenerator(function* (a) {
+          var b,
+            c,
+            d =
+              !!(1 < arguments.length && arguments[1] !== void 0) &&
+              arguments[1],
+            f =
+              2 < arguments.length && arguments[2] !== void 0
+                ? arguments[2]
+                : [];
+          try {
+            var g = yield this.queryIgPost(a, d);
+            (this.totalCount =
+              g.body.data.shortcode_media.edge_media_to_parent_comment.count),
+              console.log("===> queryAllIgPost result", g, this.totalCount),
+              (g = g.body),
+              (f = [
+                ...f,
+                ...g.data.shortcode_media.edge_media_to_parent_comment.edges,
+              ]); // progress(array.length/result.data.shortcode_media.edge_media_to_parent_comment.count);
+            var h =
+              100 *
+              (f.length /
+                g.data.shortcode_media.edge_media_to_parent_comment.count);
+            if (
+              (100 <= h
+                ? ((n.style.transform = "translateX(".concat(0, "%)")),
+                  (r.style.transform = "translateX(".concat(0, "%)")))
+                : ((n.style.transform = "translateX(".concat(-100 + h, "%)")),
+                  (r.style.transform = "translateX(".concat(-100 + h, "%)"))),
+              (b =
+                g.data.shortcode_media.edge_media_to_parent_comment.page_info
+                  .end_cursor),
+              b &&
+                b.includes("{") &&
+                ((b = b.replace(/ /g, "+")), (b = b.replace(/"/g, '\\"'))),
+              g.data.shortcode_media.edge_media_to_parent_comment.page_info
+                .has_next_page)
+            ) {
+              c = f;
+              try {
+                (c = yield this.queryAllIgPost(a, b, f)),
+                  console.log("===> resultArray result", c);
+              } catch (a) {
+                console.log("===> error", a);
+              }
+              return c;
+            }
+            return (
+              console.log("===> go", this.totalCount, f.length),
+              (this.totalGet = f.length),
+              f
+            );
+          } catch (b) {
+            return (
+              console.log("===> queryAllIgPost error", b),
+              d
+                ? {
+                    errorCode: 3,
+                    message: b.message || b,
+                    redata: { postId: a, end_cursor: d, resultArray: f },
+                  }
+                : { errorCode: 1, message: b.message || b }
+            );
+          }
+        });
+        return function queryAllIgPost() {
+          return a.apply(this, arguments);
+        };
+      })(),
+      p: (function () {
+        var a = _asyncToGenerator(function* () {
+          return yield superagent
+            .post("./igUrlV3/p")
+            .type("form")
+            .send({ url: x })
+            .then((a) => a.body);
+        });
+        return function p() {
+          return a.apply(this, arguments);
+        };
+      })(),
+      choiceIndex: function choiceIndex(a) {
+        var b =
+            1 < arguments.length && arguments[1] !== void 0 ? arguments[1] : [],
+          c = Math.floor(Math.random() * (a - 0 + 1)) + 0;
+        return b.includes(c) ? this.choiceIndex(a, b) : c;
+      },
+    };
+  }
+};

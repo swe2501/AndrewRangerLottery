@@ -1,0 +1,73 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../style/main.css" type="text/css" />
+</head>
+<body>
+	<div class="section">
+		<div class="searchForm">
+			<p class="title">Instagram Picker</p>
+			<div class="row">
+				<p class="subTitle">貼文網址</p>
+				<input class="textinput" id="url"
+					placeholder="ex. https://www.instagram.com/p/B-ZEuJypDtG/" />
+			</div>
+			<div class="row clearfix">
+				<div class="wHalf floatLeft">
+					<p class="subTitle">抽獎人數</p>
+					<input class="textinput width50" id="choice_count" value="1" />
+				</div>
+				<div class="wHalf floatLeft">
+					<p class="subTitle">標記人數</p>
+					<input class="textinput width50" id="tag_count" value="0" />
+				</div>
+			</div>
+			<div class="row">
+				<p class="subTitle">指定留言內容</p>
+				<input class="textinput keyword" id="keyword" />
+			</div>
+			<div class="row clearfix">
+				<div class="wHalf floatLeft switch">
+					<p class="subTitle">可以重複留言</p>
+					<div class="mutiSwitch" id="enable_duplicate">
+						<div class="fill"></div>
+					</div>
+				</div>
+				<div class="wHalf floatLeft">
+					<div class="send">
+						<button id="btn1" onclick="sendFun()">
+							<p>抽獎</p>
+						</button>
+						<script>
+						$( "#btn1" ).click(function() {
+    alert("Hello word" );
+});
+						function sendFun() {
+alert('send()');
+  var url = document.getElementById("url"),
+    	choice_count = document.getElementById("choice_count"),
+        tag_count = document.getElementById("tag_count"),
+        keyword = document.getElementById("keyword"),
+        enable_duplicate =document.getElementById("enable_duplicate");
+        
+        var myMap = {};
+myMap["choice_count"] = choice_count;
+myMap["tag_count"]  = tag_count;    
+
+						}
+						</script>
+
+						<div class="sending">
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+</body>
+</html>

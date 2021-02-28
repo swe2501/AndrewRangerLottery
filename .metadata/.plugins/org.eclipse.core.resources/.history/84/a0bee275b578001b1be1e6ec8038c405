@@ -1,0 +1,71 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Instagram Comment Picker</title>
+</head>
+
+<body>
+	<h1>Hello ${msg}, this is my jsp page,Congratulations!</h1>
+
+	<div class="section">
+		<div class="searchForm">
+			<p class="title">Instagram Picker</p>
+
+			<div class="row">
+				<p class="subTitle">貼文網址</p>
+				<input class="textInput" id="url"
+					placeholder=" ex. https://www.instagram.com/p/CK_izsknw0t/">
+			</div>
+
+			<div class="row clearfix">
+				::before
+				<div class="wHalf floatLeft">
+					<p class="subTitle">抽獎人數</p>
+					<input class="textInput width50" id="choice_count" value="1">
+				</div>
+
+				<div class="wHalf floatLeft">
+					<p class="subTitle">標記人數</p>
+					<input class="textInput width50" id="tag_count" value="0">
+				</div>
+				::after
+			</div>
+
+			<div class="row">
+				<p class="subTitle">指定留言內容</p>
+				<input class="textInput keyword" id="keyword" />
+			</div>
+
+			<div class="row clearfix">
+				::before
+				<div class="wHalf floatLeft switch">
+					<p class="subTitle">可以重複留言</p>
+					<div class="mutiSwitch" id="enable_duplicate">
+						::before
+						<div class="fill"></div>
+						::after
+					</div>
+				</div>
+
+				<div class="wHalf floatLeft">
+					<div class="send">
+						<p>抽獎</p>
+						<div class="sending">
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+				</div>
+				::after
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+</html>
